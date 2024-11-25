@@ -1,0 +1,8 @@
+# Angular
+node_modules/
+dist/
+# .NET Framework
+packages/
+bin/
+obj/
+.vs/

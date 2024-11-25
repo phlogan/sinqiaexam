@@ -1,0 +1,61 @@
+<div class="container mt-5">
+    <h3 class="mb-4">Movimentos Manuais</h3>
+    @if(Errors.length > 0){
+      <div  class="alert alert-danger" role="alert">
+        <h2>Um ou mais erros foram encontrados</h2>
+        <ul>
+          @for (item of Errors; track item){
+            <li>{{item}}</li>
+          }
+        </ul>
+      </div>
+    }
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="mes" class="form-label">Mês:</label>
+          <input type="number" class="form-control" name="Data_mes" id="Data_mes" placeholder="Digite o mês" [(ngModel)]="Data_mes" [disabled]="fieldsDisabled" required>           
+        </div>
+        <div class="col-md-6">
+          <label for="ano" class="form-label">Ano:</label>
+          <input type="number" class="form-control" id="Data_ano" name="Data_ano" [(ngModel)]="Data_ano" placeholder="Digite o ano" [disabled]="fieldsDisabled" required>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="Cod_Produto" class="form-label">Produto:</label>
+          <select id="Cod_Produto" class="form-select"[disabled]="fieldsDisabled" name="Cod_Produto" [(ngModel)]="Cod_Produto" (change)="onCod_ProdutoChange()" required>
+            @for (item of Produtos; track item){
+              <option value="{{item[0]}}">{{item[1]}}</option>
+            }
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="Cod_Cosif" class="form-label">Cosif:</label>
+          <select id="Cod_Cosif" class="form-select"[disabled]="fieldsDisabled || cosifsDisabled" name="Cod_Cosif" [(ngModel)]="Cod_Cosif" required>
+            @for (item of Cosifs; track item){
+              <option value="{{item[0]}}">{{item[0]}} - ({{item[1]}})</option>
+            }
+          </select>
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="Val_valor" class="form-label">Valor:</label>
+          <input type="number" class="form-control" id="Val_valor" placeholder="Digite o valor" [disabled]="fieldsDisabled" name="Val_valor" [(ngModel)]="Val_valor" required>
+        </div>
+        <div class="col-md-6">
+          <label for="Des_Descricao" class="form-label">Descrição:</label>
+          <textarea class="form-control" id="Des_Descricao" rows="1" placeholder="Digite a descrição" [disabled]="fieldsDisabled" name="Des_Descricao" [(ngModel)]="Des_Descricao" required></textarea>
+        </div>
+      </div>
+  
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary me-2" [disabled]="fieldsDisabled"(click)="clear()">Limpar</button>
+        <button type="button" class="btn btn-primary me-2" (click)="new()">Novo</button>
+        <button type="button" class="btn btn-success" [disabled]="fieldsDisabled" (click)="include()">Incluir</button>
+      </div>
+    </form>
+  </div>

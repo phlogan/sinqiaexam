@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Mês</th>
+        <th>Ano</th>
+        <th>Código do Produto</th>
+        <th>Descrição do Produto</th>
+        <th>NR Lançamento</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of  movimentosManuais; track item.Data_mes){
+      <tr>
+            <td>{{ item.data_mes }}</td>
+            <td>{{ item.data_ano }}</td>
+            <td>{{ item.cod_Produto }}</td>
+            <td>{{ item.des_Produto }}</td>
+            <td>{{ item.num_lancamento }}</td>
+            <td>{{ item.des_Descricao }}</td>
+            <td>{{ item.val_valor }}</td>
+      </tr>
+    }
+    </tbody>
+  </table>
